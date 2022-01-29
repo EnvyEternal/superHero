@@ -1,0 +1,13 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "7007",
+    "database": "dbsuperhero",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+  },
+  "production": {
+  }
+}

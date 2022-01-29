@@ -1,0 +1,1 @@
+module.exports.heroController = require('./superHeroController')
