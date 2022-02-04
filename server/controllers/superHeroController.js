@@ -46,33 +46,3 @@ module.exports.addImageById = async (req, res, next) => {
       console.log(err);
     }
   };
-/*
-  module.exports.addImageById = async (req, res, next) => {
-    const {
-      file,
-      params: { heroId },
-    } = req;
-    try {
-      const superheroUpdate = await Superhero.findByPk(heroId);
-      //console.log('superheroId:', heroId);
-      //console.log('superheroUpdate:', superheroUpdate);
-      //console.log('model', Superhero);
-      if (superheroUpdate) {
-        console.log(file.filename)
-        superheroUpdate.images.push(file.filename);
-        console.log('superheroUpdate:', superheroUpdate);
-        const [updatedRow, [updatedSuperheroes]] = await Superhero.update(
-          superheroUpdate.get(),
-          {
-            where: { id: heroId},
-            returning: true,
-          }
-        );
-        console.log('UpdatedRow:', updatedRow);
-        return res.status(200).send({ data: updatedSuperheroes });
-      }
-      res.status(404).send('Not found');
-    } catch (err) {
-      next(err);
-    }
-  };*/
