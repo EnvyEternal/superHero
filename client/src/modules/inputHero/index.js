@@ -8,7 +8,6 @@ function Entry(){
         origin_description: "",
         superpowers: [""],
         catch_phrase: "",
-        add_image: ""
       });
 
     const [img, setImage] = useState(null)
@@ -23,7 +22,6 @@ function Entry(){
       };
       const handleChangePicture = (e) =>{
         setImage(e.target.files[0])
-        img.append({"filename":"space"})
         console.log({img})
         console.log(e.target.files[0])
         console.log(e.target.files)
@@ -39,7 +37,7 @@ function Entry(){
           superpowers: [data.superpowers],
           catch_phrase: data.catch_phrase,
         };
-
+        heroData.append('add_image', img)
         //setImage(e.target.files[0])
         const config = {
           headers: { 'content-type': 'multipart/form-data' },
