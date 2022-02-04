@@ -7,8 +7,12 @@ function Entry(){
         real_name: "",
         origin_description: "",
         superpowers: [""],
-        catch_phrase: ""
+        catch_phrase: "",
+        add_image: ""
       });
+
+    const [img, setImage] = useState(null)
+    
     
       const handleChange = (e) => {
         const value = e.target.value;
@@ -17,18 +21,31 @@ function Entry(){
           [e.target.name]: value
         });
       };
+      const handleChangePicture = (e) =>{
+        setImage(e.target.files[0])
+        img.append({"filename":"space"})
+        console.log({img})
+        console.log(e.target.files[0])
+        console.log(e.target.files)
+      }
     
       const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(e)
         const heroData = {
           nickname: data.nickname,
           real_name: data.real_name,
           origin_description: data.origin_description,
           superpowers: [data.superpowers],
-          catch_phrase: data.catch_phrase
+          catch_phrase: data.catch_phrase,
         };
-        setData(heroData)
-        axios.post("http://localhost:5003/api/superhero/", heroData).then((response) => {
+
+        //setImage(e.target.files[0])
+        const config = {
+          headers: { 'content-type': 'multipart/form-data' },
+         
+      }
+        axios.post("http://localhost:5003/api/superhero/", heroData,img , config).then((response) => {
           console.log(response.status);
         });
       };
@@ -80,6 +97,15 @@ function Entry(){
                 name="catch_phrase"
                 value={data.catch_phrase}
                 onChange={handleChange}
+              />
+            </label>
+            <label>
+                File
+              <input
+                type="file"
+                name="img"
+                value={data.img}
+                onChange={handleChangePicture}
               />
             </label>
             <button type="submit">Enter</button>

@@ -2,8 +2,9 @@ const {Superhero} = require('../db/models');
 
 module.exports.createSuperHero = async (req,res) => {
     try{
-        const {body} = req;
+        const {file, body} = req;
         const createdHero = await Superhero.create(body);
+        createdHero.images.push(file.filename);
         if(createdHero) {
             console.log('Ok');
             return res.status(201).send({data: createdHero});
