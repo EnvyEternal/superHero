@@ -5,7 +5,7 @@ const HeroList = (props) => {
         return(
             <li>
                <ul>{u.nickname}</ul>
-               <ul>{u.superpowers}</ul>
+               <ul>{u.images}</ul>
             </li>
         );
 }
